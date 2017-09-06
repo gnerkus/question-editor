@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-
-const App = () => <h1>Question Editor</h1>
+import App from './App.jsx'
 
 ReactDOM.render(
   <App />,
