@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  question-api:
+    image: qe_question-api
+    build: ./question_api
+    links:
+      - mongo-data
+    ports:
+      - 5555:5555
+    volumes:
+      - ./question_api:/app:rw
+  spa:
+    image: qe_spa
+    build: ./spa
+    links:
+      - question-api
+    ports:
+      - 1337:1337
+    volumes:
+      - ./spa:/app:rw
+  mongo-data:
+    image: mongo
+    ports:
+      - 27017:27017
