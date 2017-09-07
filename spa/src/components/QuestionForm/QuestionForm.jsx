@@ -13,6 +13,7 @@ class QuestionForm extends Component {
 
     this.state = {
       title: this.props.title,
+      imgUploadCount: 0,
       rows: {
         r01: {
           label: 'row1',
@@ -84,6 +85,7 @@ class QuestionForm extends Component {
 
   changeRowThumb (imageText, rowID) {
     this.setState({
+      imgUploadCount: this.state.imgUploadCount + 1,
       rows: {
         ...this.state.rows,
         [rowID]: {
