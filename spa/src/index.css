@@ -105,3 +105,16 @@ body {
 .col {
   float: left;
 }
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item-main {
+  flex: 1 1 60%;
+}
+
+.flex-item-aside {
+  flex: 1 1 40%;
+}

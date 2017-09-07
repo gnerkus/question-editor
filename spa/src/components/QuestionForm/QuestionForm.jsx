@@ -4,6 +4,10 @@ import OptionRowList from './../Row/OptionRowList.jsx'
 import OptionColumnList from './../Column/OptionColumnList.jsx'
 import EditorLabel from './../Label/EditorLabel.jsx'
 
+import Summary from './../Summary/Summary.jsx'
+
+import { biggest, pluck } from './../../utils/aggregation'
+
 const genID = () =>
   Math.random().toString(36).substring(2) +
     (new Date()).getTime().toString(36)
@@ -205,28 +209,42 @@ class QuestionForm extends Component {
   render () {
     console.log(this.state)
     return (
-      <div>
-        <EditorLabel
-          handleLabelChange={this.changeTitle}
-          labelClass='label-large'
-          labelText={this.props.title}
-        />
-        <OptionColumnList
-          addColumn={this.addNewColumn}
-          changeColumnLabel={this.changeColumnLabel}
-          changeColumnThumb={this.changeColumnThumb}
-          deleteColumn={this.deleteColumn}
-          columns={this.state.columns}
-        />
-        <OptionRowList
-          addRow={this.addNewRow}
-          deleteRow={this.deleteRow}
-          handleRadioSelect={this.optionSelect}
-          changeRowThumb={this.changeRowThumb}
-          changeRowLabel={this.changeRowLabel}
-          rows={this.state.rows}
-          columns={this.state.columns}
-        />
+      <div className='flex'>
+        <div className='flex-item-main'>
+          <EditorLabel
+            handleLabelChange={this.changeTitle}
+            labelClass='label-large'
+            labelText={this.props.title}
+          />
+          <OptionColumnList
+            addColumn={this.addNewColumn}
+            changeColumnLabel={this.changeColumnLabel}
+            changeColumnThumb={this.changeColumnThumb}
+            deleteColumn={this.deleteColumn}
+            columns={this.state.columns}
+          />
+          <OptionRowList
+            addRow={this.addNewRow}
+            deleteRow={this.deleteRow}
+            handleRadioSelect={this.optionSelect}
+            changeRowThumb={this.changeRowThumb}
+            changeRowLabel={this.changeRowLabel}
+            rows={this.state.rows}
+            columns={this.state.columns}
+          />
+        </div>
+        <div className='flex-item-aside'>
+          <EditorLabel
+            labelClass='label-large'
+          />
+          <Summary
+            rowCount={Object.keys(this.state.rows).length}
+            columnCount={Object.keys(this.state.columns).length}
+            imgUploadCount={this.state.imgUploadCount}
+            longestRowLabel={biggest(pluck(this.state.rows, 'label'), a => a.length).length}
+            longestColumnLabel={biggest(pluck(this.state.columns, 'label'), a => a.length).length}
+          />
+        </div>
       </div>
     )
   }
