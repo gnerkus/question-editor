@@ -1,4 +1,120 @@
 body {
-  font: 100% Helvetica, sans-serif;
-  color: #999;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.thumbnail-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.thumbnail-input {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.del-row-btn {
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: crimson;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.new-row-btn {
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  font-size: 20px;
+  color: dodgerblue;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.label-large {
+  border: 0;
+  outline: none;
+  font-size: 32px;
+}
+
+.label-large:focus {
+  border-bottom: 1px solid dodgerblue;
+}
+
+.label-small {
+  border: 0;
+  outline: none;
+  font-size: 16px;
+  width: 64px;
+}
+
+.label-small:focus {
+  border-bottom: 1px solid dodgerblue;
+}
+
+.cell-input {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.option-row-label {
+  width: 160px;
+  float: left;
+  display: flex;
+}
+
+.option-row-label > div, .option-row-label > input {
+  margin: 4px;
+}
+
+.option-row-inputs {
+  float: left;
+}
+
+.option-row-inputs > input {
+  margin: 4px;
+}
+
+.row {
+  float: left;
+  width: 100%;
+}
+
+.option-col-label {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.option-col-label > div, .option-col-label > input {
+  margin: 4px;
+}
+
+.option-col-list {
+  padding-left: 160px;
+}
+
+.col {
+  float: left;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item-main {
+  flex: 1 1 60%;
+}
+
+.flex-item-aside {
+  flex: 1 1 40%;
 }
