@@ -17,12 +17,22 @@ body {
   z-index: 999;
 }
 
-.cell-button-label {
+.del-row-btn {
   height: 32px;
   width: 32px;
   text-align: center;
   font-size: 16px;
   color: crimson;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.new-row-btn {
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: dodgerblue;
   cursor: pointer;
   vertical-align: middle;
 }
@@ -71,4 +81,9 @@ body {
 
 .option-row-inputs > input {
   margin: 4px;
+}
+
+.row {
+  float: left;
+  width: 100%;
 }

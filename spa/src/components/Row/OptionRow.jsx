@@ -13,38 +13,43 @@ class OptionRow extends Component {
 
   showOptions () {
     let optionList = null
-    if (this.props.options && Array.isArray(this.props.options)) {
-      optionList = this.props.options.map((option, idx) => (
-        <input
-          key={`${this.props.rowLabel}-${idx}`}
-          type='radio'
-          name={this.props.rowLabel}
-          value={option.columnName}
-          className='cell-input'
-          defaultChecked={option.isChecked}
-          onChange={this.props.handleRadioSelect}
-        />
-      ))
-    }
+    const colKeys = Object.keys(this.props.columns)
+
+    optionList = colKeys.map((col, idx) => (
+      <input
+        key={`${this.props.id}-${idx}`}
+        type='radio'
+        name={this.props.id}
+        value={col}
+        className='cell-input'
+        defaultChecked={this.props.columns[col]}
+        onChange={this.props.handleRadioSelect}
+      />
+    ))
+
     return optionList
   }
 
   render () {
     return (
-      <div>
+      <div className='row'>
         <div className='option-row-label'>
           <DeleteButton
-            buttonAction={this.props.deleteRow}
-            labelKey={this.props.key}
+            btnAction={this.props.deleteRow}
+            btnClass='del-row-btn'
+            btnText='x'
+            id={this.props.id}
           />
           <Thumbnail
             handleFileUpload={this.props.addThumb}
-            thumbKey={this.props.key}
+            thumb={this.props.rowThumb}
+            id={this.props.id}
           />
           <EditorLabel
             handleLabelChange={this.props.changeRowLabel}
             labelClass='label-small'
             labelText={this.props.rowLabel}
+            id={this.props.id}
           />
         </div>
         <div className='option-row-inputs'>
