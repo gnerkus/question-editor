@@ -8,16 +8,16 @@ class DeleteButton extends Component {
   }
 
   handleButtonClick (clickEvent) {
-    // this.props.buttonAction(this.props.labelKey, value)
+    this.props.btnAction(this.props.id)
   }
 
   render () {
     return (
       <div className='thumbnail-wrap'>
         <div
-          className='cell-button-label'
+          className={this.props.btnClass}
           onClick={this.handleButtonClick}
-        >x</div>
+        >{this.props.btnText}</div>
       </div>
     )
   }

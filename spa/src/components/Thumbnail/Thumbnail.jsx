@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 class Thumbnail extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
-      data_uri: 'http://www.iconninja.com/files/880/528/63/to-add-new-plus-create-icon.svg'
+      data_uri: props.thumb || 'http://www.iconninja.com/files/880/528/63/to-add-new-plus-create-icon.svg'
     }
 
     this.handleFile = this.handleFile.bind(this)
@@ -30,7 +31,7 @@ class Thumbnail extends Component {
         filename: file.name,
         filetype: file.type
       }, () => {
-        // this.props.handleFileUpload(this.props.thumbKey, upload.target.result)
+        this.props.handleFileUpload(upload.target.result, this.props.id)
       })
     }
 

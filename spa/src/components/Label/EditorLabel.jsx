@@ -9,7 +9,7 @@ class EditorLabel extends Component {
 
   handleTextChange (textEvent) {
     const value = textEvent.target.value
-    // this.props.handleLabelChange(this.props.labelKey, value)
+    this.props.handleLabelChange(value, this.props.id)
   }
 
   render () {
