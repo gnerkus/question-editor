@@ -18,6 +18,7 @@ class EditorLabel extends Component {
         className={this.props.labelClass}
         onBlur={this.handleTextChange}
         type='text'
+        defaultValue={this.props.labelText}
       />
     )
   }

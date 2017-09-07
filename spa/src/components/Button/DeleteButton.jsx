@@ -8,7 +8,7 @@ class DeleteButton extends Component {
   }
 
   handleButtonClick (clickEvent) {
-    // this.props.handleLabelChange(this.props.labelKey, value)
+    // this.props.buttonAction(this.props.labelKey, value)
   }
 
   render () {

@@ -19,9 +19,12 @@ body {
 
 .cell-button-label {
   height: 32px;
-  widows: 32px;
+  width: 32px;
+  text-align: center;
+  font-size: 16px;
   color: crimson;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .label-large {
@@ -43,4 +46,29 @@ body {
 
 .label-small:focus {
   border-bottom: 1px solid dodgerblue;
+}
+
+.cell-input {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.option-row-label {
+  width: 160px;
+  float: left;
+  display: flex;
+}
+
+.option-row-label > div, .option-row-label > input {
+  margin: 4px;
+}
+
+.option-row-inputs {
+  float: left;
+}
+
+.option-row-inputs > input {
+  margin: 4px;
 }
