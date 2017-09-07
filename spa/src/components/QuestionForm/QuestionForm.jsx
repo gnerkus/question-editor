@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import OptionRowList from './../Row/OptionRowList.jsx'
+import OptionColumnList from './../Column/OptionColumnList.jsx'
 import EditorLabel from './../Label/EditorLabel.jsx'
 
 const genID = () =>
@@ -38,6 +39,11 @@ class QuestionForm extends Component {
     this.changeRowThumb = this.changeRowThumb.bind(this)
     this.deleteRow = this.deleteRow.bind(this)
     this.optionSelect = this.optionSelect.bind(this)
+
+    this.addNewColumn = this.addNewColumn.bind(this)
+    this.changeColumnLabel = this.changeColumnLabel.bind(this)
+    this.changeColumnThumb = this.changeColumnThumb.bind(this)
+    this.deleteColumn = this.deleteColumn.bind(this)
   }
 
   addNewRow () {
@@ -125,6 +131,77 @@ class QuestionForm extends Component {
     })
   }
 
+  addNewColumn () {
+    const colCount = Object.keys(this.state.columns).length
+    const colID = genID()
+    const colLabel = `col${colCount + 1}`
+
+    const newColumn = {
+      label: colLabel,
+      thumb: null
+    }
+
+    // update existing rows
+    const rows = {...this.state.rows}
+    const rowKeys = Object.keys(rows)
+
+    rowKeys.forEach(row => {
+      rows[row].columns[colID] = false
+    })
+
+    this.setState({
+      rows,
+      columns: {
+        ...this.state.columns,
+        [colID]: newColumn
+      }
+    })
+  }
+
+  changeColumnLabel (newLabel, colID) {
+    this.setState({
+      columns: {
+        ...this.state.columns,
+        [colID]: {
+          ...this.state.columns[colID],
+          label: newLabel
+        }
+      }
+    })
+  }
+
+  changeColumnThumb (imageText, colID) {
+    this.setState({
+      imgUploadCount: this.state.imgUploadCount + 1,
+      columns: {
+        ...this.state.columns,
+        [colID]: {
+          ...this.state.columns[colID],
+          thumb: imageText
+        }
+      }
+    })
+  }
+
+  deleteColumn (colID) {
+    const columns = {...this.state.columns}
+
+    delete columns[colID]
+
+    // update existing rows
+    const rows = {...this.state.rows}
+    const rowKeys = Object.keys(rows)
+
+    rowKeys.forEach(row => {
+      delete rows[row].columns[colID]
+    })
+
+    this.setState({
+      rows,
+      columns
+    })
+  }
+
   render () {
     console.log(this.state)
     return (
@@ -133,6 +210,13 @@ class QuestionForm extends Component {
           handleLabelChange={this.changeTitle}
           labelClass='label-large'
           labelText={this.props.title}
+        />
+        <OptionColumnList
+          addColumn={this.addNewColumn}
+          changeColumnLabel={this.changeColumnLabel}
+          changeColumnThumb={this.changeColumnThumb}
+          deleteColumn={this.deleteColumn}
+          columns={this.state.columns}
         />
         <OptionRowList
           addRow={this.addNewRow}
