@@ -5,7 +5,7 @@ class Thumbnail extends Component {
     super(props)
 
     this.state = {
-      data_uri: props.thumb || 'http://www.iconninja.com/files/880/528/63/to-add-new-plus-create-icon.svg'
+      data_uri: props.thumb || 'http://www.iconninja.com/files/815/613/252/photos-placeholder-mountains-gallery-photo-sun-icon.svg'
     }
 
     this.handleFile = this.handleFile.bind(this)
