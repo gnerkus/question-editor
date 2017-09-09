@@ -16,26 +16,7 @@ class QuestionForm extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      title: this.props.title,
-      imgUploadCount: 0,
-      rows: {
-        r01: {
-          label: 'row1',
-          thumb: null,
-          columns: {c01: false, c02: true}
-        },
-        r02: {
-          label: 'row2',
-          thumb: null,
-          columns: {c01: false, c02: true}
-        }
-      },
-      columns: {
-        c01: { label: 'col1', thumb: null },
-        c02: { label: 'col2', thumb: null }
-      }
-    }
+    this.state = props.question
 
     this.addNewRow = this.addNewRow.bind(this)
     this.changeTitle = this.changeTitle.bind(this)
@@ -207,14 +188,14 @@ class QuestionForm extends Component {
   }
 
   render () {
-    console.log(this.state)
+    console.log('Form state', this.state)
     return (
       <div className='flex'>
         <div className='flex-item-main'>
           <EditorLabel
             handleLabelChange={this.changeTitle}
             labelClass='label-large'
-            labelText={this.props.title}
+            labelText={this.state.title}
           />
           <OptionColumnList
             addColumn={this.addNewColumn}
@@ -232,6 +213,14 @@ class QuestionForm extends Component {
             rows={this.state.rows}
             columns={this.state.columns}
           />
+          <button
+            type='button'
+            onClick={() => {
+              this.props.btnAction(this.state)
+            }}
+          >
+            {this.props.btnText}
+          </button>
         </div>
         <div className='flex-item-aside'>
           <EditorLabel
