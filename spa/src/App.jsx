@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-import QuestionForm from './components/QuestionForm/QuestionForm.jsx'
 import './index.css'
 
-const App = () => (
-  <QuestionForm
-    title='Sample Question'
-  />
+const App = props => (
+  <div>
+    <h1>Question Editor</h1>
+    <Link to='/questions' children='View Questions' />
+  </div>
 )
 
 export default App

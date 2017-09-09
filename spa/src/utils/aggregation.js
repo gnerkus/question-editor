@@ -1,5 +1,5 @@
-export const biggest = (coll, transform) =>
-  coll.sort((first, second) => {
+export const biggest = (coll, transform) => {
+  const biggest = coll.sort((first, second) => {
     const firstSize = transform(first)
     const secondSize = transform(second)
 
@@ -11,6 +11,10 @@ export const biggest = (coll, transform) =>
       return 0
     }
   })[0]
+
+  const result = biggest ? biggest : ''
+  return result
+}
 
 export const pluck = (obj, attr) =>
   Object
