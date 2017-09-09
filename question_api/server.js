@@ -1,8 +1,6 @@
-const EXPRESS = require('express')
-
-const SERVER = EXPRESS()
+const APP = require('./app')
 const PORT = process.env.PORT || 5555
 
-SERVER.listen(PORT, () =>
+const SERVER = APP.listen(PORT, () =>
   console.log(`Listening on port: ${PORT}`)
 )
